@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [Header ("Variables")]
     public float speed;
     public float jumpForce;
     public float checkRadius;
+
+    [Header ("References")]
     public Transform groundCheck;
     public LayerMask isGround;
     public AudioClip landingSound;
