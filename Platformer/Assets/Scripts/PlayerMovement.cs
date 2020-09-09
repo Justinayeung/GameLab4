@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float jumpForce;
     public float checkRadius;
+    public float jumpTime;
 
     [Header ("References")]
     public Transform groundCheck;
@@ -15,7 +16,9 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip landingSound;
 
     bool onGround;
+    bool isJumping;
     float moveInput;
+    float jumpTimeCounter;
     Rigidbody2D rb;
     AudioSource audio;
 
@@ -27,8 +30,23 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Space) && onGround) { //Jump
+        if (Input.GetKeyDown(KeyCode.Space) && onGround) { //Normal Jump
+            isJumping = true;
             rb.velocity = Vector2.up * jumpForce;
+            jumpTimeCounter = jumpTime; //Reset jumpTimeCounter
+        }
+
+        if(Input.GetKey(KeyCode.Space) && isJumping) { //Jump Higher when holding space
+            if(jumpTimeCounter > 0) { //Prevent player from jumping forever
+                rb.velocity = Vector2.up * jumpForce;
+                jumpTimeCounter -= Time.deltaTime; //Decrease counter
+            } else {
+                isJumping = false;
+            }
+        }
+
+        if(Input.GetKeyUp(KeyCode.Space)) { //Setting isJumping bool to false
+            isJumping = false;
         }
     }
 
