@@ -48,6 +48,12 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Space)) { //Setting isJumping bool to false
             isJumping = false;
         }
+
+        if(moveInput > 0) { //Moving right
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        } else if (moveInput < 0) { //Moving left
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
     }
 
     void FixedUpdate() {
