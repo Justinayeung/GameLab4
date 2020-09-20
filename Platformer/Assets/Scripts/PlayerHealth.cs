@@ -8,13 +8,28 @@ public class PlayerHealth : MonoBehaviour
     public int health;
     public int numOfHearts;
 
+    [Header("References")]
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public AudioSource noMoreHealth;
+
+    public GameObject youLose;
+    public bool lost;
+    bool once = false;
+
+    void Start() {
+        youLose.SetActive(false);
+        lost = false;
+    }
 
     void Update() {
-        if(health <= 0) {
-
+        if(health == 0) {
+            lost = true;
+            if(!once) { 
+                StartCoroutine(PlaySound());
+            }
+            youLose.SetActive(true);
         }
 
         if(health > numOfHearts) {
@@ -34,5 +49,12 @@ public class PlayerHealth : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
+    }
+
+    IEnumerator PlaySound() {
+        noMoreHealth.Play();
+        yield return new WaitForSeconds(0.1f);
+        once = true;
+        noMoreHealth.Stop();
     }
 }

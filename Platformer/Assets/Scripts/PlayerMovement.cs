@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask isGround;
     public AudioSource landingSound;
+    public AudioSource hurtSound;
     public SpriteRenderer sprite;
     public Animator imageAnim;
     public CameraShake cameraShake;
@@ -42,36 +43,38 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && onGround) { //Normal Jump
-            anim.SetTrigger("Jump");
-            isJumping = true;
-            rb.velocity = Vector2.up * jumpForce;
-            jumpTimeCounter = jumpTime; //Reset jumpTimeCounter
-        }
-
-        if(Input.GetKey(KeyCode.UpArrow) && isJumping) { //Jump Higher when holding space
-            if(jumpTimeCounter > 0) { //Prevent player from jumping forever
+        if(playerHealth.lost == false) {
+            if (Input.GetKeyDown(KeyCode.UpArrow) && onGround) { //Normal Jump
+                anim.SetTrigger("Jump");
+                isJumping = true;
                 rb.velocity = Vector2.up * jumpForce;
-                jumpTimeCounter -= Time.deltaTime; //Decrease counter
-            } else {
+                jumpTimeCounter = jumpTime; //Reset jumpTimeCounter
+            }
+
+            if(Input.GetKey(KeyCode.UpArrow) && isJumping) { //Jump Higher when holding space
+                if(jumpTimeCounter > 0) { //Prevent player from jumping forever
+                    rb.velocity = Vector2.up * jumpForce;
+                    jumpTimeCounter -= Time.deltaTime; //Decrease counter
+                } else {
+                    isJumping = false;
+                }
+            }
+
+            if(Input.GetKeyUp(KeyCode.UpArrow)) { //Setting isJumping bool to false
                 isJumping = false;
             }
-        }
 
-        if(Input.GetKeyUp(KeyCode.UpArrow)) { //Setting isJumping bool to false
-            isJumping = false;
-        }
+            if(moveInput > 0) { //Moving right
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            } else if (moveInput < 0) { //Moving left
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
 
-        if(moveInput > 0) { //Moving right
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        } else if (moveInput < 0) { //Moving left
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        }
-
-        if(moveInput == 0) {
-            anim.SetBool("Move", false);
-        } else {
-            anim.SetBool("Move", true);
+            if(moveInput == 0) {
+                anim.SetBool("Move", false);
+            } else {
+                anim.SetBool("Move", true);
+            }
         }
     }
 
@@ -82,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other) {
-        //audio.PlayOneShot(landingSound); //Play landing audio
         landingSound.Play();
         if(other.gameObject.CompareTag("Enemy")) {
             StartCoroutine(ChangeColorOnHit());
@@ -95,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     IEnumerator ChangeColorOnHit() {
+        hurtSound.Play();
         sprite.color = hitColor;
         yield return new WaitForSeconds(0.5f);
         sprite.color = originalColor;
