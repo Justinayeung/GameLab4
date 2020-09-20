@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [Header ("References")]
     public Transform groundCheck;
     public LayerMask isGround;
-    public AudioClip landingSound;
+    public AudioSource landingSound;
     public SpriteRenderer sprite;
     public Animator imageAnim;
     public CameraShake cameraShake;
@@ -82,7 +82,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other) {
-        audio.PlayOneShot(landingSound); //Play landing audio
+        //audio.PlayOneShot(landingSound); //Play landing audio
+        landingSound.Play();
         if(other.gameObject.CompareTag("Enemy")) {
             StartCoroutine(ChangeColorOnHit());
             StartCoroutine(cameraShake.Shake(duration, magnitude));

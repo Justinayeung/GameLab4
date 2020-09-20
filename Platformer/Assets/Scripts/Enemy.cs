@@ -15,6 +15,10 @@ public class Enemy : MonoBehaviour
     public Transform groundDetection;
     public Animator anim;
     public SpriteRenderer sprite;
+    public AudioSource audio;
+    public AudioClip chimes;
+    public AudioClip damage;
+    public AudioClip destroy;
 
     float dazedTime;
     bool movingLeft = true;
@@ -48,12 +52,13 @@ public class Enemy : MonoBehaviour
         }
 
         if(health <= 0) {
+            audio.PlayOneShot(chimes);
+            audio.PlayOneShot(destroy);
             Destroy(gameObject);
         }
     }
 
     public void TakeDamage(int damage) {
-        //Play hurt sounds
         dazedTime = startDazedTime;
         Instantiate(attackTakenParticles, transform.position, Quaternion.identity);
         health -= damage;
@@ -61,6 +66,8 @@ public class Enemy : MonoBehaviour
     }
 
     IEnumerator ChangeColorOnHit() {
+        audio.PlayOneShot(chimes);
+        audio.PlayOneShot(damage);
         sprite.color = hitColor;
         yield return new WaitForSeconds(0.5f);
         sprite.color = originalColor;
