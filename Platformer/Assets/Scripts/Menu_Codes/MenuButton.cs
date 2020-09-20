@@ -38,7 +38,7 @@ public class MenuButton : MonoBehaviour
 
     IEnumerator starting() {
         yield return new WaitForSeconds(1f);
-        //SceneManager.LoadScene();
+        SceneManager.LoadScene("Level_1");
     }
 
     IEnumerator quitting() {

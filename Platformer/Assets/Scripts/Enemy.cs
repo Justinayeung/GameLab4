@@ -13,13 +13,17 @@ public class Enemy : MonoBehaviour
     [Header("References")]
     public GameObject attackTakenParticles;
     public Transform groundDetection;
+    public Animator anim;
+    public SpriteRenderer sprite;
 
     float dazedTime;
     bool movingLeft = true;
+    Color hitColor = Color.red;
+    Color originalColor = Color.white;
 
     // Start is called before the first frame update
     void Start() {
-        
+        anim.SetBool("Move", true);
     }
 
     // Update is called once per frame
@@ -53,6 +57,12 @@ public class Enemy : MonoBehaviour
         dazedTime = startDazedTime;
         Instantiate(attackTakenParticles, transform.position, Quaternion.identity);
         health -= damage;
-        Debug.Log("damage taken");
+        StartCoroutine(ChangeColorOnHit());
+    }
+
+    IEnumerator ChangeColorOnHit() {
+        sprite.color = hitColor;
+        yield return new WaitForSeconds(0.5f);
+        sprite.color = originalColor;
     }
 }
