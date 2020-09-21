@@ -21,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update() {
         if(timeBtwAttack <= 0) {
-            if(Input.GetKeyDown(KeyCode.X)) {
+            if(Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.X)) {
                 StartCoroutine(cameraShake.Shake(duration, magnitude));
                 timeBtwAttack = startTimeBtwAttack;
                 anim.SetTrigger("Attack");

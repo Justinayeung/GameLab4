@@ -44,14 +44,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update() {
         if(playerHealth.lost == false) {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && onGround) { //Normal Jump
+            if (Input.GetKeyDown(KeyCode.Space) && onGround || Input.GetKeyDown(KeyCode.UpArrow) && onGround || Input.GetKeyDown(KeyCode.W) && onGround) { //Normal Jump
                 anim.SetTrigger("Jump");
                 isJumping = true;
                 rb.velocity = Vector2.up * jumpForce;
                 jumpTimeCounter = jumpTime; //Reset jumpTimeCounter
             }
 
-            if(Input.GetKey(KeyCode.UpArrow) && isJumping) { //Jump Higher when holding space
+            if(Input.GetKey(KeyCode.Space) && isJumping || Input.GetKey(KeyCode.UpArrow) && isJumping || Input.GetKey(KeyCode.W) && isJumping) { //Jump Higher when holding space
                 if(jumpTimeCounter > 0) { //Prevent player from jumping forever
                     rb.velocity = Vector2.up * jumpForce;
                     jumpTimeCounter -= Time.deltaTime; //Decrease counter
@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            if(Input.GetKeyUp(KeyCode.UpArrow)) { //Setting isJumping bool to false
+            if(Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W)) { //Setting isJumping bool to false
                 isJumping = false;
             }
 
