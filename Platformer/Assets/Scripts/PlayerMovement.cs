@@ -79,9 +79,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void FixedUpdate() {
-        onGround = Physics2D.OverlapCircle(groundCheck.position, checkRadius, isGround); //Checking if player is on ground
-        moveInput = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        if(playerHealth.lost == false) {
+            onGround = Physics2D.OverlapCircle(groundCheck.position, checkRadius, isGround); //Checking if player is on ground
+            moveInput = Input.GetAxisRaw("Horizontal");
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other) {

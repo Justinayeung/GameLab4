@@ -66,13 +66,14 @@ public class Enemy : MonoBehaviour
     IEnumerator ChangeColorOnHit() {
         chimes.Play();
         destroy.Play();
-        sprite.color = hitColor;
-        yield return new WaitForSeconds(0.5f);
-        sprite.color = originalColor;
         if(health <= 0) {
             collider.enabled = false;
             sprite.enabled = false;
             StartCoroutine(Destroy());
+        } else { 
+            sprite.color = hitColor;
+            yield return new WaitForSeconds(0.5f);
+            sprite.color = originalColor;
         }
     }
 
