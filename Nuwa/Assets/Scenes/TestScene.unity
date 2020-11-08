@@ -502,12 +502,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e00d7674ac246543a434484043678c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeOfStone: 0
   YellowStone: {fileID: 21300000, guid: 3b211f8a0a5396742be8cc81baf4d62b, type: 3}
   RedStone: {fileID: 21300000, guid: 66c06ca8e903350459966ce78efa110a, type: 3}
   BlueStone: {fileID: 21300000, guid: 66c57fe544b74214eaee970cb798f7e3, type: 3}
   BlackStone: {fileID: 21300000, guid: a57e75cc5807fa04fa05a236115a3848, type: 3}
   WhiteStone: {fileID: 21300000, guid: 04b886f5abbd11b4faae6b1d3af7370a, type: 3}
+  OriginalCursor: {fileID: 2800000, guid: f6ac49706bd85934cbf79db6d694a6a7, type: 3}
+  YellowCursor: {fileID: 2800000, guid: 0690b9fc6827dfb4c966337b350d4dc6, type: 3}
+  RedCursor: {fileID: 2800000, guid: 4b937bc675a3fc042a5ec632f64034a2, type: 3}
+  BlueCursor: {fileID: 2800000, guid: 18bf36852de8fe84aadb4791ba0ef42a, type: 3}
+  BlackCursor: {fileID: 2800000, guid: 8df7d698c455d03439f8cf746ccb7094, type: 3}
+  WhiteCursor: {fileID: 2800000, guid: 591d2f78fefdad04cabe9f8ee8242a21, type: 3}
+  typeOfStone: 0
+  yellowStone: 0
+  redStone: 0
+  blueStone: 0
+  blackStone: 0
+  whiteStone: 0
 --- !u!95 &243862712
 Animator:
   serializedVersion: 3
@@ -1226,10 +1237,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 5000
+  far clip plane: 100
   field of view: 70
   orthographic: 1
-  orthographic size: 8.3
+  orthographic size: 8.37
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1878,7 +1889,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14330
+  m_Name: pb_Mesh14352
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2071,12 +2082,12 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 949717003}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 70
-    OrthographicSize: 8.3
+    OrthographicSize: 8.37
     NearClipPlane: 0.1
-    FarClipPlane: 5000
+    FarClipPlane: 100
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
