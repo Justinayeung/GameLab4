@@ -47,7 +47,6 @@ public class ButtonScroll : MonoBehaviour
             }
         }
         StoneSwitch();
-        checkingCursor();
     }
 
     void StoneSwitch() {
