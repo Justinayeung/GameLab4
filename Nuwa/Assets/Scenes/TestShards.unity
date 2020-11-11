@@ -132,9 +132,10 @@ GameObject:
   - component: {fileID: 161044633}
   - component: {fileID: 161044634}
   - component: {fileID: 161044635}
+  - component: {fileID: 161044636}
   m_Layer: 0
   m_Name: Shard_14
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,8 +148,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161044632}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.68, y: 2.04, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 11
@@ -298,6 +299,33 @@ PolygonCollider2D:
       - {x: -7.7599998, y: 4.39}
       - {x: -7.73, y: 4.5}
       - {x: -7.72, y: 4.5499997}
+--- !u!114 &161044636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161044632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 6
+  durationOfScale: 6
+  endPos: {x: -1.68, y: 2.04, z: 0}
+  endScale: {x: 0.7, y: 0.7, z: 0.7}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: -1.68, y: 2.04, z: 0}
+  startPos: {x: -1.68, y: 2.04, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.4
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &248973946
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,9 +337,10 @@ GameObject:
   - component: {fileID: 248973947}
   - component: {fileID: 248973948}
   - component: {fileID: 248973949}
+  - component: {fileID: 248973950}
   m_Layer: 0
   m_Name: Shard_08
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,8 +353,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248973946}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.8, y: -1.38, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 17
@@ -493,6 +522,76 @@ PolygonCollider2D:
       - {x: 7.73, y: -10.8}
       - {x: 7.73, y: -10.74}
       - {x: 7.62, y: -10.45}
+--- !u!114 &248973950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248973946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 0.8, y: -1.38, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 1.03, y: -1.81, z: 0}
+  startPos: {x: 0.8, y: -1.38, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
+--- !u!1 &350833589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 350833591}
+  - component: {fileID: 350833590}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &350833590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350833589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74861978b51dcae4ba77fac9da6162a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &350833591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350833589}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &376935126
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,9 +603,10 @@ GameObject:
   - component: {fileID: 376935127}
   - component: {fileID: 376935128}
   - component: {fileID: 376935129}
+  - component: {fileID: 376935130}
   m_Layer: 0
   m_Name: Shard_04
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -519,8 +619,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376935126}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.8, y: 0.44, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 21
@@ -776,6 +876,33 @@ PolygonCollider2D:
       - {x: 10.33, y: -6.3999996}
       - {x: 10.42, y: -6.29}
       - {x: 10.429999, y: -6.2599998}
+--- !u!114 &376935130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376935126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 3
+  durationOfScale: 3
+  endPos: {x: 0.8, y: 0.44, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 0.65, y: 0.44, z: 0}
+  startPos: {x: 0.8, y: 0.44, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.25
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &379567897
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,9 +914,10 @@ GameObject:
   - component: {fileID: 379567898}
   - component: {fileID: 379567899}
   - component: {fileID: 379567900}
+  - component: {fileID: 379567901}
   m_Layer: 0
   m_Name: Shard_17
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -802,8 +930,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379567897}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.23, y: 0.15, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 8
@@ -981,6 +1109,33 @@ PolygonCollider2D:
       - {x: -18.99, y: -2.32}
       - {x: -18.789999, y: -2.1299999}
       - {x: -18.46, y: -1.86}
+--- !u!114 &379567901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379567897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: -1.23, y: 0.15, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: -1.86, y: 0.15, z: 0}
+  startPos: {x: -1.23, y: 0.15, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &471782907
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,9 +1147,10 @@ GameObject:
   - component: {fileID: 471782908}
   - component: {fileID: 471782909}
   - component: {fileID: 471782910}
+  - component: {fileID: 471782911}
   m_Layer: 0
   m_Name: Shard_03
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1007,8 +1163,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471782907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.47, y: 1.24, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 22
@@ -1281,6 +1437,33 @@ PolygonCollider2D:
       - {x: 13.389999, y: 0.47}
       - {x: 13.42, y: 0.53999996}
       - {x: 13.45, y: 0.83}
+--- !u!114 &471782911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471782907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 2.47, y: 1.24, z: 0}
+  endScale: {x: 0.7, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 2.69, y: 1.39, z: 0}
+  startPos: {x: 2.47, y: 1.24, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &528747356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,9 +1475,10 @@ GameObject:
   - component: {fileID: 528747357}
   - component: {fileID: 528747358}
   - component: {fileID: 528747359}
+  - component: {fileID: 528747360}
   m_Layer: 0
   m_Name: Shard_16
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1307,8 +1491,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528747356}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.37, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 9
@@ -1531,6 +1715,33 @@ PolygonCollider2D:
       - {x: 1.9799999, y: 0.78999996}
       - {x: 2, y: 0.82}
       - {x: 2.01, y: 0.88}
+--- !u!114 &528747360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528747356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 0, y: 0.37, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 0, y: 1.03, z: 0}
+  startPos: {x: 0, y: 0.37, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &591434267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,9 +1753,10 @@ GameObject:
   - component: {fileID: 591434268}
   - component: {fileID: 591434269}
   - component: {fileID: 591434270}
+  - component: {fileID: 591434271}
   m_Layer: 0
   m_Name: Shard_18
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1557,8 +1769,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591434267}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.87, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 7
@@ -1734,6 +1946,33 @@ PolygonCollider2D:
       - {x: -14.719999, y: 0.57}
       - {x: -14.61, y: 0.68}
       - {x: -14.38, y: 0.78999996}
+--- !u!114 &591434271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591434267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 0, y: 0.87, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: -0.22, y: 1.32, z: 0}
+  startPos: {x: 0, y: 0.87, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &612616779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,9 +2014,10 @@ GameObject:
   - component: {fileID: 719089701}
   - component: {fileID: 719089702}
   - component: {fileID: 719089703}
+  - component: {fileID: 719089704}
   m_Layer: 0
   m_Name: Shard_05
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1790,8 +2030,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719089700}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.29, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 20
@@ -1894,6 +2134,33 @@ PolygonCollider2D:
       - {x: 2.02, y: -0.22999999}
       - {x: 1.9799999, y: -0.07}
       - {x: 1.89, y: 0.29999998}
+--- !u!114 &719089704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719089700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 6
+  durationOfScale: 6
+  endPos: {x: -0.29, y: 0, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 0.36, y: 0, z: 0}
+  startPos: {x: -0.29, y: 0, z: 0}
+  moveDistance: 0.14
+  moveSpeed: 0.45
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &798952625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,9 +2172,10 @@ GameObject:
   - component: {fileID: 798952626}
   - component: {fileID: 798952627}
   - component: {fileID: 798952628}
+  - component: {fileID: 798952629}
   m_Layer: 0
   m_Name: Shard_01
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1920,8 +2188,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798952625}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.03, y: 0.94, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 24
@@ -2071,6 +2339,33 @@ PolygonCollider2D:
       - {x: 19.189999, y: 0.03}
       - {x: 19.199999, y: 0.03}
       - {x: 19.199999, y: 10.8}
+--- !u!114 &798952629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798952625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 2.03, y: 0.94, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 1.59, y: 0.94, z: 0}
+  startPos: {x: 2.03, y: 0.94, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &867789395
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,9 +2443,10 @@ GameObject:
   - component: {fileID: 880682983}
   - component: {fileID: 880682984}
   - component: {fileID: 880682985}
+  - component: {fileID: 880682986}
   m_Layer: 0
   m_Name: Shard_02
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2163,8 +2459,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880682982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.31, y: 0.59, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 23
@@ -2327,6 +2623,33 @@ PolygonCollider2D:
       - {x: 12.08, y: -6.6}
       - {x: 12.63, y: -6.6}
       - {x: 12.75, y: -6.5899997}
+--- !u!114 &880682986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880682982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 1.31, y: 0.59, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 1.89, y: 0.08, z: 0}
+  startPos: {x: 1.31, y: 0.59, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &946709087
 GameObject:
   m_ObjectHideFlags: 3
@@ -2515,9 +2838,10 @@ GameObject:
   - component: {fileID: 1118968046}
   - component: {fileID: 1118968047}
   - component: {fileID: 1118968048}
+  - component: {fileID: 1118968049}
   m_Layer: 0
   m_Name: Shard_10
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2530,8 +2854,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1118968045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.02, y: -0.72, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 15
@@ -2693,6 +3017,33 @@ PolygonCollider2D:
       - {x: 14.79, y: -10.7699995}
       - {x: 14.67, y: -10.69}
       - {x: 14.57, y: -10.63}
+--- !u!114 &1118968049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118968045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 1.02, y: -0.72, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 1.02, y: -1.36, z: 0}
+  startPos: {x: 1.02, y: -0.72, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &1161665660
 GameObject:
   m_ObjectHideFlags: 0
@@ -2704,9 +3055,10 @@ GameObject:
   - component: {fileID: 1161665661}
   - component: {fileID: 1161665662}
   - component: {fileID: 1161665663}
+  - component: {fileID: 1161665664}
   m_Layer: 0
   m_Name: Shard_21
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2719,8 +3071,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1161665660}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.94, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 4
@@ -3027,6 +3379,33 @@ PolygonCollider2D:
       - {x: -4.5299997, y: -3.1599998}
       - {x: -4.44, y: -3.1599998}
       - {x: -4.38, y: -3.1399999}
+--- !u!114 &1161665664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161665660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 3
+  durationOfScale: 3
+  endPos: {x: -0.94, y: 0, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: -0.47, y: 0.27, z: 0}
+  startPos: {x: -0.94, y: 0, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.25
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &1230726149
 GameObject:
   m_ObjectHideFlags: 0
@@ -3038,9 +3417,10 @@ GameObject:
   - component: {fileID: 1230726150}
   - component: {fileID: 1230726151}
   - component: {fileID: 1230726152}
+  - component: {fileID: 1230726153}
   m_Layer: 0
   m_Name: Shard_15
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3053,8 +3433,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230726149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.29, y: 1.89, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.6, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 10
@@ -3272,6 +3652,33 @@ PolygonCollider2D:
       - {x: -6.97, y: 4.42}
       - {x: -6.94, y: 4.43}
       - {x: -6.7599998, y: 4.47}
+--- !u!114 &1230726153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230726149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 0.29, y: 1.89, z: 0}
+  endScale: {x: 0.8, y: 0.6, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 0.02, y: 2.19, z: 0}
+  startPos: {x: 0.29, y: 1.89, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &1306242486
 GameObject:
   m_ObjectHideFlags: 0
@@ -3283,9 +3690,10 @@ GameObject:
   - component: {fileID: 1306242487}
   - component: {fileID: 1306242488}
   - component: {fileID: 1306242489}
+  - component: {fileID: 1306242490}
   m_Layer: 0
   m_Name: Shard_06
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3298,8 +3706,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306242486}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.29, y: -0.95, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 19
@@ -3487,6 +3895,33 @@ PolygonCollider2D:
       - {x: 2.95, y: -7.74}
       - {x: 2.97, y: -7.69}
       - {x: 2.97, y: -7.64}
+--- !u!114 &1306242490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306242486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 0.44, y: -0.95, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 0.29, y: -1.31, z: 0}
+  startPos: {x: 0.44, y: -0.95, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &1319805052
 GameObject:
   m_ObjectHideFlags: 0
@@ -3498,9 +3933,10 @@ GameObject:
   - component: {fileID: 1319805053}
   - component: {fileID: 1319805054}
   - component: {fileID: 1319805055}
+  - component: {fileID: 1319805056}
   m_Layer: 0
   m_Name: Shard_20
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3513,8 +3949,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319805052}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.51, y: -1.09, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.7, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 5
@@ -3750,6 +4186,33 @@ PolygonCollider2D:
       - {x: -10.16, y: -10.28}
       - {x: -10.15, y: -10.28}
       - {x: -10.09, y: -10.23}
+--- !u!114 &1319805056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319805052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: -0.51, y: -1.09, z: 0}
+  endScale: {x: 0.8, y: 0.7, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: -0.69, y: -1.45, z: 0}
+  startPos: {x: -0.51, y: -1.09, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &1337258513
 GameObject:
   m_ObjectHideFlags: 0
@@ -3883,9 +4346,10 @@ GameObject:
   - component: {fileID: 1564426899}
   - component: {fileID: 1564426900}
   - component: {fileID: 1564426901}
+  - component: {fileID: 1564426902}
   m_Layer: 0
   m_Name: Shard_11
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3898,8 +4362,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564426898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.73, y: 1.38, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 14
@@ -4061,6 +4525,33 @@ PolygonCollider2D:
       - {x: 3.6599998, y: 2.36}
       - {x: 3.8, y: 2.51}
       - {x: 4.0699997, y: 2.75}
+--- !u!114 &1564426902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564426898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 0.73, y: 1.38, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 0.44, y: 1.38, z: 0}
+  startPos: {x: 0.73, y: 1.38, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &1592428493
 GameObject:
   m_ObjectHideFlags: 0
@@ -4072,9 +4563,10 @@ GameObject:
   - component: {fileID: 1592428494}
   - component: {fileID: 1592428495}
   - component: {fileID: 1592428496}
+  - component: {fileID: 1592428497}
   m_Layer: 0
   m_Name: Shard_22
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4087,8 +4579,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592428493}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.08, y: -0.07, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 3
@@ -4289,6 +4781,33 @@ PolygonCollider2D:
       - {x: -4.02, y: -9.08}
       - {x: -3.8899999, y: -8.86}
       - {x: -3.78, y: -8.66}
+--- !u!114 &1592428497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592428493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 0.08, y: -0.07, z: 0}
+  endScale: {x: 0.7, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: -0.1, y: 0.09, z: 0}
+  startPos: {x: 0.08, y: -0.07, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &1666421328
 GameObject:
   m_ObjectHideFlags: 0
@@ -4300,9 +4819,10 @@ GameObject:
   - component: {fileID: 1666421329}
   - component: {fileID: 1666421330}
   - component: {fileID: 1666421331}
+  - component: {fileID: 1666421332}
   m_Layer: 0
   m_Name: Shard_13
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4315,8 +4835,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666421328}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.11, y: 1.38, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 12
@@ -4480,6 +5000,33 @@ PolygonCollider2D:
       - {x: -11.259999, y: 5.23}
       - {x: -11, y: 5.44}
       - {x: -10.88, y: 5.54}
+--- !u!114 &1666421332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666421328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: -2.11, y: 1.38, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: -1.6, y: 2.18, z: 0}
+  startPos: {x: -2.11, y: 1.38, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &1683938751
 GameObject:
   m_ObjectHideFlags: 0
@@ -4621,9 +5168,10 @@ GameObject:
   - component: {fileID: 1735552887}
   - component: {fileID: 1735552888}
   - component: {fileID: 1735552889}
+  - component: {fileID: 1735552890}
   m_Layer: 0
   m_Name: Shard_09
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4636,8 +5184,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735552886}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.6, y: -0.58, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 16
@@ -4854,6 +5402,33 @@ PolygonCollider2D:
       - {x: 19.199999, y: -10.8}
       - {x: 19.199999, y: -6.31}
       - {x: 18.72, y: -6.31}
+--- !u!114 &1735552890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735552886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 1.6, y: -0.58, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 1.89, y: -0.44, z: 0}
+  startPos: {x: 1.6, y: -0.58, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &1741475700
 GameObject:
   m_ObjectHideFlags: 0
@@ -4865,9 +5440,10 @@ GameObject:
   - component: {fileID: 1741475701}
   - component: {fileID: 1741475702}
   - component: {fileID: 1741475703}
+  - component: {fileID: 1741475704}
   m_Layer: 0
   m_Name: Shard_23
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4880,8 +5456,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741475700}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.15, y: -1.16, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 2
@@ -5045,6 +5621,33 @@ PolygonCollider2D:
       - {x: -2.45, y: -10.66}
       - {x: -2.59, y: -10.41}
       - {x: -2.74, y: -10.15}
+--- !u!114 &1741475704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741475700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: -0.15, y: -1.16, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: -0.13, y: -1.5, z: 0}
+  startPos: {x: -0.15, y: -1.16, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &1811822823
 GameObject:
   m_ObjectHideFlags: 0
@@ -5056,9 +5659,10 @@ GameObject:
   - component: {fileID: 1811822824}
   - component: {fileID: 1811822825}
   - component: {fileID: 1811822826}
+  - component: {fileID: 1811822827}
   m_Layer: 0
   m_Name: Shard_24
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5071,8 +5675,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811822823}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.37, y: -3.05, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 1
@@ -5227,6 +5831,33 @@ PolygonCollider2D:
       - {x: -0.04, y: -10.42}
       - {x: -0.049999997, y: -10.37}
       - {x: -0.07, y: -10.28}
+--- !u!114 &1811822827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811822823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 6
+  durationOfScale: 6
+  endPos: {x: -0.37, y: -3.05, z: 0}
+  endScale: {x: 0.6, y: 0.6, z: 0.5}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: -0.35, y: -2.47, z: 0}
+  startPos: {x: -0.37, y: -3.05, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.4
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &2026691779
 GameObject:
   m_ObjectHideFlags: 0
@@ -5238,9 +5869,10 @@ GameObject:
   - component: {fileID: 2026691780}
   - component: {fileID: 2026691781}
   - component: {fileID: 2026691782}
+  - component: {fileID: 2026691783}
   m_Layer: 0
   m_Name: Shard_19
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5253,8 +5885,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026691779}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.31, y: -0.87, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 6
@@ -5394,6 +6026,33 @@ PolygonCollider2D:
       - {x: -14.219999, y: -10.8}
       - {x: -14.2, y: -10.559999}
       - {x: -14.19, y: -10}
+--- !u!114 &2026691783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026691779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 3
+  durationOfScale: 3
+  endPos: {x: -1.31, y: -0.87, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: -1.31, y: -0.87, z: 0}
+  startPos: {x: -1.31, y: -0.87, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.25
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &2041065380
 GameObject:
   m_ObjectHideFlags: 0
@@ -5405,9 +6064,10 @@ GameObject:
   - component: {fileID: 2041065381}
   - component: {fileID: 2041065382}
   - component: {fileID: 2041065383}
+  - component: {fileID: 2041065384}
   m_Layer: 0
   m_Name: Shard_12
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5420,8 +6080,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041065380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.24, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 13
@@ -5594,6 +6254,33 @@ PolygonCollider2D:
       - {x: 3.36, y: 5.67}
       - {x: 3.34, y: 5.81}
       - {x: 3.32, y: 5.81}
+--- !u!114 &2041065384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041065380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 5
+  durationOfScale: 5
+  endPos: {x: 0, y: 1.24, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 0, y: 2.04, z: 0}
+  startPos: {x: 0, y: 1.24, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.25
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &2056280735
 GameObject:
   m_ObjectHideFlags: 0
@@ -5605,9 +6292,10 @@ GameObject:
   - component: {fileID: 2056280736}
   - component: {fileID: 2056280737}
   - component: {fileID: 2056280738}
+  - component: {fileID: 2056280739}
   m_Layer: 0
   m_Name: Shard_07
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5620,8 +6308,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056280735}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.66, y: -0.36, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 18
@@ -5770,6 +6458,33 @@ PolygonCollider2D:
       - {x: 5.3199997, y: -5.8399997}
       - {x: 5.33, y: -5.81}
       - {x: 5.33, y: -5.66}
+--- !u!114 &2056280739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056280735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 0.66, y: -0.36, z: 0}
+  endScale: {x: 0.8, y: 0.8, z: 0.8}
+  speed: 8
+  intro: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 0.95, y: -0.36, z: 0}
+  startPos: {x: 0.66, y: -0.36, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!1 &2118088504
 GameObject:
   m_ObjectHideFlags: 0
@@ -5915,7 +6630,7 @@ GameObject:
   - component: {fileID: 2143490054}
   m_Layer: 0
   m_Name: Shard_25
-  m_TagString: Untagged
+  m_TagString: Shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5928,8 +6643,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143490050}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.22, y: -2.91, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children: []
   m_Father: {fileID: 1337258514}
   m_RootOrder: 0
@@ -5996,8 +6711,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d4789254abdea343b6c7a7caf1d2adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  durationOfPos: 4
+  durationOfScale: 4
+  endPos: {x: 0.22, y: -2.91, z: 0}
+  endScale: {x: 0.6, y: 0.6, z: 0.6}
+  speed: 8
+  intro: 0
   originalPos: {x: 0, y: 0, z: 0}
-  movePos: {fileID: 0}
+  moveSpeedToOrgPos: 4
+  moveDirection: {x: 0.73, y: -3.42, z: 0}
+  startPos: {x: 0.22, y: -2.91, z: 0}
+  moveDistance: 0.12
+  moveSpeed: 0.3
+  clicked: 0
+  orgScale: {x: 1, y: 1, z: 1}
+  scaleToOrgTime: 4
 --- !u!60 &2143490054
 PolygonCollider2D:
   m_ObjectHideFlags: 0
