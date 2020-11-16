@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
  
 [Serializable]
-[PostProcess(typeof(ColorSpreadRenderer), PostProcessEvent.AfterStack, "Custom/Grayscale")]
+[PostProcess(typeof(ColorSpreadRenderer), PostProcessEvent.AfterStack, "Custom/Greyscale")]
 public sealed class ColorSpread : PostProcessEffectSettings
 {
     [Range(0f, 1f), Tooltip("Grayscale effect intensity.")]
