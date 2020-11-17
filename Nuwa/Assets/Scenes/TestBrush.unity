@@ -131,7 +131,6 @@ GameObject:
   m_Component:
   - component: {fileID: 276056826}
   - component: {fileID: 276056827}
-  - component: {fileID: 276056828}
   m_Layer: 8
   m_Name: PP_Global
   m_TagString: Untagged
@@ -166,23 +165,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharedProfile: {fileID: 11400000, guid: 2b236bf972f0b4b4eace4f424f0c591b, type: 2}
-  isGlobal: 0
+  isGlobal: 1
   blendDistance: 0
   weight: 1
   priority: 0
---- !u!114 &276056828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276056825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab5b76644783a7848aee9a0a29a8f7c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volume: {fileID: 276056827}
 --- !u!1 &535708169
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +451,7 @@ MonoBehaviour:
   BlueStone: {fileID: 21300000, guid: 66c57fe544b74214eaee970cb798f7e3, type: 3}
   BlackStone: {fileID: 21300000, guid: a57e75cc5807fa04fa05a236115a3848, type: 3}
   WhiteStone: {fileID: 21300000, guid: 04b886f5abbd11b4faae6b1d3af7370a, type: 3}
-  OriginalCursor: {fileID: 2800000, guid: f6ac49706bd85934cbf79db6d694a6a7, type: 3}
+  OriginalCursor: {fileID: 2800000, guid: 63806125b46da28439484b1434d04444, type: 3}
   YellowCursor: {fileID: 2800000, guid: 0690b9fc6827dfb4c966337b350d4dc6, type: 3}
   RedCursor: {fileID: 2800000, guid: 4b937bc675a3fc042a5ec632f64034a2, type: 3}
   BlueCursor: {fileID: 2800000, guid: 18bf36852de8fe84aadb4791ba0ef42a, type: 3}

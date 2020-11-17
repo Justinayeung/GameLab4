@@ -5,27 +5,28 @@ using UnityEngine;
 public class DissolveTest : MonoBehaviour
 {
     Material material;
-    bool isDissolving = false;
-    float scale;
+    bool painting = false;
+    float scale = 16;
     
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         material = GetComponent<SpriteRenderer>().material;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            isDissolving = true;
+        if(Input.GetMouseButton(0)) {
+            painting = true;
+        } else {
+            painting = false;
         }
 
-        if (isDissolving) {
+        if (painting) {
             scale -= Time.deltaTime;
             if(scale <= 0f) {
                 scale = 0;
-                isDissolving = false;
+                painting = false;
             }
         }
 
