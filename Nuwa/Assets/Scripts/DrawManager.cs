@@ -3,6 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using DG.Tweening;
+using PDollarGestureRecognizer;
+using Cinemachine;
+using UnityEditor;
 
 using PDollarGestureRecognizer;
 
@@ -50,6 +54,16 @@ public class DrawManager : MonoBehaviour {
 	}
 
 	void Update () {
+        //Exit
+        if (Input.GetKey(KeyCode.Escape)) {
+            Application.Quit();
+        }
+
+        //Drawing
+        if (!gameManager.isDrawing) {
+            return;
+        }
+
         if(gameManager.isDrawing) { 
 		    if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer) {
 			    if (Input.touchCount > 0) {
@@ -119,8 +133,11 @@ public class DrawManager : MonoBehaviour {
             return;
         }
 
+        Camera.main.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+
         if(gestureResult.GestureClass == "Circle") {
             Transform b = Instantiate(spherePrefab, gestureLinesRenderer[0].bounds.center, Quaternion.identity);
+            b.DOScale(0, 0.2f).From().SetEase(Ease.OutBack);
 
             if (recognized) {
                 recognized = false;
