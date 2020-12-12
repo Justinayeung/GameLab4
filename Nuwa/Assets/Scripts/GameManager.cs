@@ -16,9 +16,10 @@ public class GameManager : MonoBehaviour
     public CinemachineVirtualCamera virtualCam;
     public Renderer drawingRenderer;
     public bool isDrawing;
-
+    DrawManager draw;
     // Start is called before the first frame update
     void Start() {
+        draw = FindObjectOfType<DrawManager>();
         if(brushCamera != null) {
             brushCamera.gameObject.SetActive(false);
         }
@@ -26,6 +27,13 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        if (Input.GetMouseButtonDown(1)) { // Hide and lock cursor when right mouse button pressed
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        if (Input.GetMouseButtonUp(1)) { // Unlock and show cursor when right mouse button released
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
         Vector3 temp = Input.mousePosition;
         temp.z = 0.4f;
         if (isDrawing) {
@@ -41,6 +49,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift)) {
             virtualCam.enabled = true;
             setDrawing(!isDrawing);
+            draw.TryRecognize();
         }
     }
 
@@ -52,6 +61,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void setDrawing(bool state) {
+        Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
         if (state == true) {
             Camera.main.cullingMask &= ~(1 << LayerMask.NameToLayer("Default"));
             Camera.main.cullingMask &= ~(1 << LayerMask.NameToLayer("Interactables"));

@@ -128,7 +128,7 @@ public class DrawManager : MonoBehaviour {
         Gesture candidate = new Gesture(points.ToArray());
         Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
 
-        if(gestureResult.Score < 0.75f) {
+        if(gestureResult.Score < 0.70f) {
             ClearLine();
             return;
         }
