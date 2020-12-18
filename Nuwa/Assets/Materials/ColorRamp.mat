@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_A5F2E253:
-        m_Texture: {fileID: 2800000, guid: 007fa1593e082cb41aa2b2b61be738ea, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4056990152eb4e34ba0ec81bfe7b6e2d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlphaTex:
