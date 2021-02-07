@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Box
   - Shard
+  - Ground
   layers:
   - Default
   - TransparentFX

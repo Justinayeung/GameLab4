@@ -8,9 +8,8 @@ using PDollarGestureRecognizer;
 using Cinemachine;
 using UnityEditor;
 
-using PDollarGestureRecognizer;
-
-public class DrawManager : MonoBehaviour {
+public class DrawManager : MonoBehaviour 
+{
     private Vector3 loc;
     private GameManager gameManager;
     public LayerMask layerMask;
@@ -18,11 +17,6 @@ public class DrawManager : MonoBehaviour {
     [Header("References")]
 	public Transform gestureOnScreenPrefab;
     public Transform spherePrefab;
-    public Animator BG_Left;
-    public Animator BG_Right;
-    public Animator M1;
-    public Animator M2;
-    public GameObject Rain;
 
 	private List<Gesture> trainingSet = new List<Gesture>();
 
@@ -44,11 +38,6 @@ public class DrawManager : MonoBehaviour {
 	private string newGestureName = "";
 
 	void Start () {
-        BG_Left.SetBool("Start", false);
-        BG_Right.SetBool("Start", false);
-        M1.SetBool("ScaleY", false);
-        M2.SetBool("ScaleY", false);
-        Rain.SetActive(false);
         gameManager = FindObjectOfType<GameManager>();
 		platform = Application.platform;
 		drawArea = new Rect(0, 0, Screen.width, Screen.height);
@@ -149,31 +138,6 @@ public class DrawManager : MonoBehaviour {
         if(gestureResult.GestureClass == "Circle") {
             Transform b = Instantiate(spherePrefab, gestureLinesRenderer[0].bounds.center, Quaternion.identity);
             b.DOScale(0, 0.2f).From().SetEase(Ease.OutBack);
-            ClearVertexCount();
-        }
-
-        if(gestureResult.GestureClass == "WindL") {
-            BG_Left.SetBool("Start", true);
-            ClearVertexCount();
-        }
-
-        if(gestureResult.GestureClass == "WindR") {
-            BG_Right.SetBool("Start", true);
-            ClearVertexCount();
-        }
-
-        if(gestureResult.GestureClass == "Mountain") { //Small Mountain
-            M1.SetBool("ScaleY", true);
-            ClearVertexCount();
-        }
-
-        if(gestureResult.GestureClass == "Mountain") { //Taller Mountain
-            M2.SetBool("ScaleY", true);
-            ClearVertexCount();
-        }
-
-        if(gestureResult.GestureClass == "RainDrop") {
-            Rain.SetActive(true);
             ClearVertexCount();
         }
     }

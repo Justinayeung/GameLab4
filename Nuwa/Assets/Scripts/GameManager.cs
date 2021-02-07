@@ -17,8 +17,10 @@ public class GameManager : MonoBehaviour
     public Renderer drawingRenderer;
     public bool isDrawing;
     DrawManager draw;
+
     // Start is called before the first frame update
     void Start() {
+        //Set brush camera
         draw = FindObjectOfType<DrawManager>();
         if(brushCamera != null) {
             brushCamera.gameObject.SetActive(false);
@@ -31,14 +33,14 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
         if (Input.GetMouseButtonUp(1)) { // Unlock and show cursor when right mouse button released
-            Cursor.visible = true;
+            //Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
         Vector3 temp = Input.mousePosition;
         temp.z = 0.4f;
         if (isDrawing) {
-            brush.position = Vector3.Lerp(brush.position, Camera.main.ScreenToWorldPoint(temp), 0.5f);
-            ClampBrushPosition(brush);
+            //brush.position = Vector3.Lerp(brush.position, Camera.main.ScreenToWorldPoint(temp), 0.5f);
+            //ClampBrushPosition(brush);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift)) {
@@ -65,7 +67,7 @@ public class GameManager : MonoBehaviour
         if (state == true) {
             Camera.main.cullingMask &= ~(1 << LayerMask.NameToLayer("Default"));
             Camera.main.cullingMask &= ~(1 << LayerMask.NameToLayer("Interactables"));
-            brush.DOLocalMoveY(0.17f, .3f).SetUpdate(true).From();
+            //brush.DOLocalMoveY(0.17f, .3f).SetUpdate(true).From();
         } else {
             Camera.main.cullingMask |= 1 << LayerMask.NameToLayer("Default");
             Camera.main.cullingMask |= 1 << LayerMask.NameToLayer("Interactables");
