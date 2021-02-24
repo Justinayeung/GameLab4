@@ -9,12 +9,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	{
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
-		[SerializeField] float m_JumpPower = 12f;
+		//[SerializeField] float m_JumpPower = 12f;
 		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
+		public bool canMove;
 
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
@@ -45,34 +46,37 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		public void Move(Vector3 move, bool crouch, bool jump)
 		{
+            if (canMove) { 
+				// convert the world relative moveInput vector into a local-relative
+				// turn amount and forward amount required to head in the desired
+				// direction.
+				if (move.magnitude > 1f) move.Normalize();
+				move = transform.InverseTransformDirection(move);
+				CheckGroundStatus();
+				move = Vector3.ProjectOnPlane(move, m_GroundNormal);
+				m_TurnAmount = Mathf.Atan2(move.x, move.z);
+				m_ForwardAmount = move.z;
 
-			// convert the world relative moveInput vector into a local-relative
-			// turn amount and forward amount required to head in the desired
-			// direction.
-			if (move.magnitude > 1f) move.Normalize();
-			move = transform.InverseTransformDirection(move);
-			CheckGroundStatus();
-			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
-			m_TurnAmount = Mathf.Atan2(move.x, move.z);
-			m_ForwardAmount = move.z;
+				ApplyExtraTurnRotation();
 
-			ApplyExtraTurnRotation();
+				// control and velocity handling is different when grounded and airborne:
+				if (m_IsGrounded)
+				{
+					HandleGroundedMovement(crouch, jump);
+				}
+				else
+				{
+					HandleAirborneMovement();
+				}
 
-			// control and velocity handling is different when grounded and airborne:
-			if (m_IsGrounded)
-			{
-				HandleGroundedMovement(crouch, jump);
-			}
-			else
-			{
-				HandleAirborneMovement();
-			}
+				ScaleCapsuleForCrouching(crouch);
+				PreventStandingInLowHeadroom();
 
-			ScaleCapsuleForCrouching(crouch);
-			PreventStandingInLowHeadroom();
-
-			// send input and other state parameters to the animator
-			UpdateAnimator(move);
+				// send input and other state parameters to the animator
+				UpdateAnimator(move);
+			} else {
+				m_Rigidbody.velocity = new Vector3(0f, 0f, 0f);
+            }
 		}
 
 
@@ -167,7 +171,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // check whether conditions are right to allow a jump:
             if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded")) {
                 // jump!
-                m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
+                //m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
                 m_IsGrounded = false;
                 m_Animator.applyRootMotion = false;
                 m_GroundCheckDistance = 0.1f;

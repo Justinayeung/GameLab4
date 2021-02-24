@@ -69,7 +69,6 @@ public class Demo : MonoBehaviour {
                     points.Clear();
 
                     foreach (LineRenderer lineRenderer in gestureLinesRenderer) {
-
                         lineRenderer.SetVertexCount(0);
                         Destroy(lineRenderer.gameObject);
                     }
@@ -89,7 +88,6 @@ public class Demo : MonoBehaviour {
 
             if (Input.GetMouseButton(0)) {
                 points.Add(new Point(virtualKeyPosition.x, -virtualKeyPosition.y, strokeId));
-
                 currentGestureLineRenderer.SetVertexCount(++vertexCount);
                 currentGestureLineRenderer.SetPosition(vertexCount - 1, Camera.main.ScreenToWorldPoint(new Vector3(virtualKeyPosition.x, virtualKeyPosition.y, 10)));
             }

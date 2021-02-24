@@ -8,20 +8,28 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Brush References")]
+    [Header("Brush/Ink References")]
     public Transform brush;
     public Camera brushCamera;
+    public Transform inkSprite;
 
     [Header("Rendering References and Variables")]
     public CinemachineVirtualCamera virtualCam;
     public Renderer drawingRenderer;
     public bool isDrawing;
+    public PickUpBrush haveBrush;
+
     DrawManager draw;
+    UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter character;
 
     // Start is called before the first frame update
     void Start() {
         //Set brush camera
+        Cursor.visible = false;
         draw = FindObjectOfType<DrawManager>();
+        character = FindObjectOfType<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter>();
+        haveBrush = FindObjectOfType<PickUpBrush>();
+        character.canMove = true;
         if(brushCamera != null) {
             brushCamera.gameObject.SetActive(false);
         }
@@ -29,29 +37,33 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetMouseButtonDown(1)) { // Hide and lock cursor when right mouse button pressed
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        if (Input.GetMouseButtonUp(1)) { // Unlock and show cursor when right mouse button released
-            //Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
+        //if (Input.GetMouseButtonDown(1)) { // Hide and lock cursor when right mouse button pressed
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //}
+        //if (Input.GetMouseButtonUp(1)) { // Unlock and show cursor when right mouse button released
+        //    //Cursor.visible = true;
+        //    Cursor.lockState = CursorLockMode.None;
+        //}
         Vector3 temp = Input.mousePosition;
         temp.z = 0.4f;
         if (isDrawing) {
-            //brush.position = Vector3.Lerp(brush.position, Camera.main.ScreenToWorldPoint(temp), 0.5f);
-            //ClampBrushPosition(brush);
+            inkSprite.transform.position = Vector3.Lerp(brush.position, Camera.main.ScreenToWorldPoint(temp), 0.5f);
+            ClampBrushPosition(inkSprite);
+            //Vector2 cursorPos = Camera.main.ScreenToWorldPoint(temp);
+            //inkSprite.transform.position = cursorPos;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift)) {
-            virtualCam.enabled = false;
-            setDrawing(!isDrawing);
-        }
+        if (haveBrush.brushObtained) { 
+            if (Input.GetKeyDown(KeyCode.LeftShift)) {
+                virtualCam.enabled = false;
+                setDrawing(!isDrawing);
+            }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift)) {
-            virtualCam.enabled = true;
-            setDrawing(!isDrawing);
-            draw.TryRecognize();
+            if (Input.GetKeyUp(KeyCode.LeftShift)) {
+                virtualCam.enabled = true;
+                setDrawing(!isDrawing);
+                draw.TryRecognize();
+            }
         }
     }
 
@@ -67,13 +79,15 @@ public class GameManager : MonoBehaviour
         if (state == true) {
             Camera.main.cullingMask &= ~(1 << LayerMask.NameToLayer("Default"));
             Camera.main.cullingMask &= ~(1 << LayerMask.NameToLayer("Interactables"));
-            //brush.DOLocalMoveY(0.17f, .3f).SetUpdate(true).From();
+            //inkSprite.DOLocalMoveY(0.17f, .3f).SetUpdate(true).From();
+            inkSprite.DOScale(0, 0.2f).From().SetEase(Ease.OutBack);
         } else {
             Camera.main.cullingMask |= 1 << LayerMask.NameToLayer("Default");
             Camera.main.cullingMask |= 1 << LayerMask.NameToLayer("Interactables");
         }
 
         isDrawing = state;
+        character.canMove = !state;
         virtualCam.enabled = !state;
         drawingRenderer.enabled = state;
         brushCamera.gameObject.SetActive(state);

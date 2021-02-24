@@ -7,6 +7,10 @@ TagManager:
   - Box
   - Shard
   - Ground
+  - Cage
+  - Key1
+  - Key2
+  - Key3
   layers:
   - Default
   - TransparentFX
@@ -21,7 +25,7 @@ TagManager:
   - Interactables
   - BrushObject
   - CameraColliders
-  - 
+  - Key
   - 
   - 
   - 

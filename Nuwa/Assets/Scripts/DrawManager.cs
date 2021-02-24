@@ -13,10 +13,12 @@ public class DrawManager : MonoBehaviour
     private Vector3 loc;
     private GameManager gameManager;
     public LayerMask layerMask;
+    public LayerMask layerMaskKey;
 
     [Header("References")]
 	public Transform gestureOnScreenPrefab;
     public Transform spherePrefab;
+    public Transform key1Prefab;
 
 	private List<Gesture> trainingSet = new List<Gesture>();
 
@@ -87,7 +89,6 @@ public class DrawManager : MonoBehaviour
 					    points.Clear();
 
 					    foreach (LineRenderer lineRenderer in gestureLinesRenderer) {
-
 						    lineRenderer.SetVertexCount(0);
 						    Destroy(lineRenderer.gameObject);
 					    }
@@ -107,7 +108,6 @@ public class DrawManager : MonoBehaviour
 			
 			    if (Input.GetMouseButton(0)) {
 				    points.Add(new Point(virtualKeyPosition.x, -virtualKeyPosition.y, strokeId));
-
 				    currentGestureLineRenderer.SetVertexCount(++vertexCount);
 				    currentGestureLineRenderer.SetPosition(vertexCount - 1, Camera.main.ScreenToWorldPoint(new Vector3(virtualKeyPosition.x, virtualKeyPosition.y, 10)));
 			    }
@@ -121,6 +121,7 @@ public class DrawManager : MonoBehaviour
         }
 
         if(recognized) {
+			ClearVertexCount();
             ClearLine();
         }
 
@@ -129,6 +130,7 @@ public class DrawManager : MonoBehaviour
         Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
 
         if(gestureResult.Score < 0.70f) {
+			ClearVertexCount();
             ClearLine();
             return;
         }
@@ -136,9 +138,37 @@ public class DrawManager : MonoBehaviour
         Camera.main.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
 
         if(gestureResult.GestureClass == "Circle") {
-            Transform b = Instantiate(spherePrefab, gestureLinesRenderer[0].bounds.center, Quaternion.identity);
-            b.DOScale(0, 0.2f).From().SetEase(Ease.OutBack);
-            ClearVertexCount();
+			//RaycastHit hit = new RaycastHit();
+			//if (Physics.SphereCast(gestureLinesRenderer[0].bounds.center, 10, Camera.main.transform.forward, out hit, 15, layerMask))
+			//{
+			//	Debug.Log("Key1");
+			//	Debug.Log(hit.transform.name);
+			//	if (hit.collider.CompareTag("Key1"))
+			//	{
+			//		Transform b = Instantiate(key1Prefab, gestureLinesRenderer[0].bounds.center, Quaternion.identity);
+			//		b.DOScale(0, 0.2f).From().SetEase(Ease.OutBack);
+			//	}
+			//}
+            //Transform b = Instantiate(spherePrefab, gestureLinesRenderer[0].bounds.center, Quaternion.identity);
+            //b.DOScale(0, 0.2f).From().SetEase(Ease.OutBack);
+			ClearVertexCount();
+        }
+
+		if(gestureResult.GestureClass == "Key") {
+			RaycastHit hit = new RaycastHit();
+			if (Physics.SphereCast(gestureLinesRenderer[0].bounds.center, 10, Camera.main.transform.forward, out hit, 20, layerMaskKey))
+			{
+				Debug.Log("Key");
+				Debug.Log(hit.transform.name);
+				if (hit.collider.CompareTag("Key2"))
+				{
+					Debug.Log("Key Obtained");
+					//hit.collider.GetComponent<OpenLock>().OpeningLock();
+					//hit.collider.GetComponent<Monkey>().FreeMonkey();
+					//Camera.main.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+				}
+			}
+			ClearVertexCount();
         }
     }
 

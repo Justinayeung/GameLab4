@@ -20,16 +20,26 @@ public class InkColorSwitch : MonoBehaviour
     public Texture2D BlackCursor;
     public Texture2D WhiteCursor;
 
+    public GameObject ArrowUI;
+
+    InkWhite ink;
+
     // Start is called before the first frame update
     void Start() {
         //Set cursor
+        ArrowUI.SetActive(false);
         Cursor.SetCursor(OriginalCursor, Vector2.zero, CursorMode.ForceSoftware);
         inkColor = 0;
+        ink = FindObjectOfType<InkWhite>();
     }
 
     // Update is called once per frame
     void Update() {
-        
+        if(ink.powers && ink.inkPalette) {
+            ArrowUI.SetActive(true);
+        } else {
+            ArrowUI.SetActive(false);
+        }
     }
 
     void StoneSwitch() {

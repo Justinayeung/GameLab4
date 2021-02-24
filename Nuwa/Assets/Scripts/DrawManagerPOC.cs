@@ -98,7 +98,6 @@ public class DrawManagerPOC : MonoBehaviour {
 					    points.Clear();
 
 					    foreach (LineRenderer lineRenderer in gestureLinesRenderer) {
-
 						    lineRenderer.SetVertexCount(0);
 						    Destroy(lineRenderer.gameObject);
 					    }
