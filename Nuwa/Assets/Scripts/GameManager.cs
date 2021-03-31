@@ -20,14 +20,16 @@ public class GameManager : MonoBehaviour
     public PickUpBrush haveBrush;
 
     DrawManager draw;
-    UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter character;
+    //UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter character;
+    PlayerMoveScript character;
 
     // Start is called before the first frame update
     void Start() {
         //Set brush camera
         Cursor.visible = false;
         draw = FindObjectOfType<DrawManager>();
-        character = FindObjectOfType<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter>();
+        //character = FindObjectOfType<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter>();
+        character = FindObjectOfType<PlayerMoveScript>();
         haveBrush = FindObjectOfType<PickUpBrush>();
         character.canMove = true;
         if(brushCamera != null) {

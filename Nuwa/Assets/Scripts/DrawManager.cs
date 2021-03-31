@@ -14,11 +14,25 @@ public class DrawManager : MonoBehaviour
     private GameManager gameManager;
     public LayerMask layerMask;
     public LayerMask layerMaskKey;
+    public LayerMask layerMaskPaths;
 
     [Header("References")]
 	public Transform gestureOnScreenPrefab;
     public Transform spherePrefab;
-    public Transform key1Prefab;
+    public Transform keyPrefab;
+	public Transform lightOrb;
+	public GameObject path1;
+	public GameObject keyDrawPath;
+
+	[Header("Particle References")]
+    public Transform pillar1Particle;
+    public Transform pillar2Particle;
+    public Transform pillar3Particle;
+    public Transform cageParticle;
+
+	[Header("UI References")]
+	public GameObject KeyRecipe;
+	public GameObject PathRecipe;
 
 	private List<Gesture> trainingSet = new List<Gesture>();
 
@@ -40,6 +54,10 @@ public class DrawManager : MonoBehaviour
 	private string newGestureName = "";
 
 	void Start () {
+		KeyRecipe.SetActive(false);
+		PathRecipe.SetActive(false);
+		path1.SetActive(false);
+		keyDrawPath.SetActive(false);
         gameManager = FindObjectOfType<GameManager>();
 		platform = Application.platform;
 		drawArea = new Rect(0, 0, Screen.width, Screen.height);
@@ -129,47 +147,121 @@ public class DrawManager : MonoBehaviour
         Gesture candidate = new Gesture(points.ToArray());
         Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
 
-        if(gestureResult.Score < 0.70f) {
+        if(gestureResult.Score < 0.60f) {
 			ClearVertexCount();
             ClearLine();
             return;
         }
+		//Transform b = Instantiate(spherePrefab, gestureLinesRenderer[0].bounds.center, Quaternion.identity);
+		//b.DOScale(0, 0.2f).From().SetEase(Ease.OutBack);
+		
+		//First Puzzle
+		if(gestureResult.GestureClass == "KeyTip") {
+			if(!StaticClass.monkeyKey) {
+				RaycastHit hit = new RaycastHit();
+				if (Physics.SphereCast(gestureLinesRenderer[0].bounds.center, 10, Camera.main.transform.forward, out hit, 25, layerMask)) {
+					//Debug.Log("Key3");
+					//Debug.Log(hit.transform.name);
+					if (hit.collider.CompareTag("Key3")) {
+						Transform b = Instantiate(pillar3Particle, gestureLinesRenderer[0].bounds.center, Quaternion.identity);
+						Camera.main.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+						StaticClass.pillar3Activated = true;
+					}
+				}
+				ClearVertexCount();
+			}
+		}
 
-        Camera.main.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
-
-        if(gestureResult.GestureClass == "Circle") {
-			//RaycastHit hit = new RaycastHit();
-			//if (Physics.SphereCast(gestureLinesRenderer[0].bounds.center, 10, Camera.main.transform.forward, out hit, 15, layerMask))
-			//{
-			//	Debug.Log("Key1");
-			//	Debug.Log(hit.transform.name);
-			//	if (hit.collider.CompareTag("Key1"))
-			//	{
-			//		Transform b = Instantiate(key1Prefab, gestureLinesRenderer[0].bounds.center, Quaternion.identity);
-			//		b.DOScale(0, 0.2f).From().SetEase(Ease.OutBack);
-			//	}
-			//}
-            //Transform b = Instantiate(spherePrefab, gestureLinesRenderer[0].bounds.center, Quaternion.identity);
-            //b.DOScale(0, 0.2f).From().SetEase(Ease.OutBack);
-			ClearVertexCount();
+		if(gestureResult.GestureClass == "Line") {
+			if(!StaticClass.monkeyKey && !StaticClass.pillar2Activated) {
+				RaycastHit hit = new RaycastHit();
+				if (Physics.SphereCast(gestureLinesRenderer[0].bounds.center, 10, Camera.main.transform.forward, out hit, 25, layerMaskKey)) {
+					//Debug.Log("Key2");
+					//Debug.Log(hit.transform.name);
+					if (hit.collider.CompareTag("Key2")) {
+						Transform b = Instantiate(pillar2Particle, gestureLinesRenderer[0].bounds.center, Quaternion.identity);
+						StartCoroutine(PathUI());
+						Camera.main.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+						StaticClass.pillar2Activated = true;
+					}
+				}
+				ClearVertexCount();
+			}
         }
 
-		if(gestureResult.GestureClass == "Key") {
+		if(gestureResult.GestureClass == "Line") {
 			RaycastHit hit = new RaycastHit();
-			if (Physics.SphereCast(gestureLinesRenderer[0].bounds.center, 10, Camera.main.transform.forward, out hit, 20, layerMaskKey))
-			{
-				Debug.Log("Key");
-				Debug.Log(hit.transform.name);
-				if (hit.collider.CompareTag("Key2"))
-				{
-					Debug.Log("Key Obtained");
-					//hit.collider.GetComponent<OpenLock>().OpeningLock();
-					//hit.collider.GetComponent<Monkey>().FreeMonkey();
-					//Camera.main.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+			if (Physics.SphereCast(gestureLinesRenderer[0].bounds.center, 10, Camera.main.transform.forward, out hit, 25, layerMaskPaths)) {
+				//Debug.Log("Path1");
+				//Debug.Log(hit.transform.name);
+				if (hit.collider.CompareTag("CreatePath1")) {
+					path1.SetActive(true);
+					Camera.main.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
 				}
 			}
 			ClearVertexCount();
         }
+
+        if(gestureResult.GestureClass == "Circle") {
+            if (StaticClass.monkeyFree) {
+				Transform b = Instantiate(lightOrb, gestureLinesRenderer[0].bounds.center, Quaternion.identity);
+				b.DOScale(0, 0.2f).From().SetEase(Ease.OutBack);
+            }
+
+			if(!StaticClass.monkeyKey && !StaticClass.pillar1Activated) {
+				RaycastHit hit = new RaycastHit();
+				if (Physics.SphereCast(gestureLinesRenderer[0].bounds.center, 10, Camera.main.transform.forward, out hit, 25, layerMask)) {
+					//Debug.Log("Key1");
+					//Debug.Log(hit.transform.name);
+					if (hit.collider.CompareTag("Key1")) {
+						Transform b = Instantiate(pillar1Particle, gestureLinesRenderer[0].bounds.center, Quaternion.identity);
+						Camera.main.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+						StaticClass.pillar1Activated = true;
+					}
+				}
+				ClearVertexCount();
+			}
+		}
+
+		if(StaticClass.pillar1Activated && StaticClass.pillar2Activated && StaticClass.pillar3Activated && !StaticClass.monkeyKey){
+			keyDrawPath.SetActive(true);
+            if (gestureResult.GestureClass == "Key") {
+                RaycastHit hit = new RaycastHit();
+                if (Physics.SphereCast(gestureLinesRenderer[0].bounds.center, 10, Camera.main.transform.forward, out hit, 25, layerMaskKey)) {
+                    //Debug.Log("Key");
+                    //Debug.Log(hit.transform.name);
+                    if (hit.collider.CompareTag("Key2")) {
+                        Transform b = Instantiate(cageParticle, gestureLinesRenderer[0].bounds.center, Quaternion.identity);
+                        StartCoroutine(KeyUI());
+                        StaticClass.monkeyKey = true;
+                        Debug.Log("Key Obtained");
+                        Debug.Log(StaticClass.monkeyKey);
+                    }
+                }
+                ClearVertexCount();
+            }
+        }
+
+		if(StaticClass.monkeyKey) {
+				if(gestureResult.GestureClass == "Key") {
+					RaycastHit hit = new RaycastHit();
+					if (Physics.SphereCast(gestureLinesRenderer[0].bounds.center, 10, Camera.main.transform.forward, out hit, 20, layerMask)) {
+						Debug.Log("Key");
+						Debug.Log(hit.transform.name);
+						if (hit.collider.CompareTag("Cage")) {
+							hit.collider.GetComponent<OpenLock>().OpeningLock();
+							hit.collider.GetComponent<Monkey>().FreeMonkey();
+							Camera.main.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+						}
+						
+						if(hit.collider.CompareTag("PathLock")) { 
+							hit.collider.GetComponent<OpenPathTesting>().OpeningPath();
+							Camera.main.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+						}
+					}
+					ClearVertexCount();
+				}
+			}
     }
 
     public void ClearVertexCount() {
@@ -194,5 +286,17 @@ public class DrawManager : MonoBehaviour
             Destroy(lineRenderer.gameObject);
         }
         gestureLinesRenderer.Clear();
+    }
+
+	IEnumerator KeyUI() {
+        KeyRecipe.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        KeyRecipe.SetActive(false);
+    }
+
+	IEnumerator PathUI() {
+        PathRecipe.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        PathRecipe.SetActive(false);
     }
 }

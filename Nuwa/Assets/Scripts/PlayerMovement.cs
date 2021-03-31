@@ -17,20 +17,30 @@ public class PlayerMovement : MonoBehaviour
     [Header("References")]
     public Transform player;
 
-    private Rigidbody rb;
-    private float smoothSpeed;
+    Rigidbody rb;
+    float smoothSpeed;
+    Animator anim;
+    CapsuleCollider Capsule;
 
     // Start is called before the first frame update
     void Start() {
-        rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+		rb = GetComponent<Rigidbody>();
+		Capsule = GetComponent<CapsuleCollider>();
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
 
     // Update is called once per frame
     void Update() {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(moveHorizontal * speed, rb.velocity.y, moveVertical * speed);
-        rb.velocity = movement;
+        if(canMove) { 
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
+            Vector3 movement = new Vector3(moveHorizontal * speed, rb.velocity.y, moveVertical * speed);
+            rb.velocity = movement;
+            anim.SetBool("Idle", false);
+        } else {
+            anim.SetBool("Idle", true);
+        }
 
         //If using input then rotate towards direction
         //if(moveHorizontal != 0 && moveVertical != 0) {

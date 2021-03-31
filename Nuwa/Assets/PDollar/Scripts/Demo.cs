@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.IO;
 
 using PDollarGestureRecognizer;
+using System.Xml;
+using System.Xml.Serialization;
 
 public class Demo : MonoBehaviour {
 

@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/PDollar/Scene/Demo.unity
     guid: bacf025fd0d5b485e9ae059c8dd4eae6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: c5d207e6474914b4988639513fbe8128
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Instructions.unity
     guid: dfc17f08a329c024b821cfb9feb3dd96
   - enabled: 1
