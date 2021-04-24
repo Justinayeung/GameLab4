@@ -10,5 +10,10 @@ public class ParticleFollowPath : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath(pathName), "easetype", iTween.EaseType.easeInOutSine, "time", time));
+        Delete();
+    }
+
+    void Delete() { 
+        Destroy(this.gameObject, 2.1f);
     }
 }

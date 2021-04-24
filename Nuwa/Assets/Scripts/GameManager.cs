@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     public CinemachineVirtualCamera virtualCam;
     public Renderer drawingRenderer;
     public bool isDrawing;
-    public PickUpBrush haveBrush;
 
     DrawManager draw;
     //UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter character;
@@ -30,7 +29,6 @@ public class GameManager : MonoBehaviour
         draw = FindObjectOfType<DrawManager>();
         //character = FindObjectOfType<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter>();
         character = FindObjectOfType<PlayerMoveScript>();
-        haveBrush = FindObjectOfType<PickUpBrush>();
         character.canMove = true;
         if(brushCamera != null) {
             brushCamera.gameObject.SetActive(false);
@@ -55,7 +53,7 @@ public class GameManager : MonoBehaviour
             //inkSprite.transform.position = cursorPos;
         }
 
-        if (haveBrush.brushObtained) { 
+        if (StaticClass.brushObtained) { 
             if (Input.GetKeyDown(KeyCode.LeftShift)) {
                 virtualCam.enabled = false;
                 setDrawing(!isDrawing);

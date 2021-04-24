@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     float smoothSpeed;
     Animator anim;
     CapsuleCollider Capsule;
+    bool beginAnimFinished = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -28,40 +29,46 @@ public class PlayerMovement : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		Capsule = GetComponent<CapsuleCollider>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+        StartCoroutine(BeginningIsFalse());
     }
 
     // Update is called once per frame
     void Update() {
-        if(canMove) { 
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-            Vector3 movement = new Vector3(moveHorizontal * speed, rb.velocity.y, moveVertical * speed);
-            rb.velocity = movement;
-            anim.SetBool("Idle", false);
-        } else {
-            anim.SetBool("Idle", true);
-        }
-
-        //If using input then rotate towards direction
-        //if(moveHorizontal != 0 && moveVertical != 0) {
-        //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationSpeed);
-        //    canMove = true;
-        //} else {
-        //    canMove = false;
-        //}
-
-        //Jump
-        if (canJump) {
-            if (Input.GetButtonDown("Jump")) {
-                rb.velocity = Vector3.up * jumpVelocity;
+        Debug.Log(beginAnimFinished);
+        if (beginAnimFinished) {
+            if(canMove) { 
+                float moveHorizontal = Input.GetAxis("Horizontal");
+                float moveVertical = Input.GetAxis("Vertical");
+                Vector3 movement = new Vector3(moveHorizontal * speed, rb.velocity.y, moveVertical * speed);
+                rb.velocity = movement;
+                anim.SetBool("Idle", false);
+            } else {
+                anim.SetBool("Idle", true);
             }
-        }
 
-        //Faster Falling
-        if (rb.velocity.y > 0) { //If vertical motion is less then 0 (falling)
-            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime; //Apply fall multiplier
-        } else if (rb.velocity.y > 0 && !Input.GetButton("Jump")) { //If jumping and if button not held = low jump
-            rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            //If using input then rotate towards direction
+            //if(moveHorizontal != 0 && moveVertical != 0) {
+            //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationSpeed);
+            //    canMove = true;
+            //} else {
+            //    canMove = false;
+            //}
+
+            //Jump
+            if (canJump) {
+                if (Input.GetButtonDown("Jump")) {
+                    rb.velocity = Vector3.up * jumpVelocity;
+                }
+            }
+
+            //Faster Falling
+            if (rb.velocity.y > 0) { //If vertical motion is less then 0 (falling)
+                rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime; //Apply fall multiplier
+            } else if (rb.velocity.y > 0 && !Input.GetButton("Jump")) { //If jumping and if button not held = low jump
+                rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
+        } else {
+            anim.SetBool("Begin", true);
         }
     }
 
@@ -75,5 +82,11 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground")) {
             canJump = false;
         }
+    }
+
+    IEnumerator BeginningIsFalse() {
+        anim.SetBool("Begin", true);
+        yield return new WaitForSeconds(7.5f);
+        beginAnimFinished = true;
     }
 }

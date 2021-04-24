@@ -22,6 +22,7 @@ public class PlayerMoveScript : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
+        StartCoroutine(initialWaitTime());
     }
 
     // Update is called once per frame
@@ -36,10 +37,10 @@ public class PlayerMoveScript : MonoBehaviour
             //if (move != Vector3.zero) {
             //    gameObject.transform.forward = move;
             //}
-                     
+
             isGrounded = Physics.CheckSphere(groundChecker.transform.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
-            if (isGrounded && playerVelocity.y < 0) { 
-                playerVelocity.y = 0f; 
+            if (isGrounded && playerVelocity.y < 0) {
+                playerVelocity.y = 0f;
             }
 
             // Changes the height position of the player.
@@ -58,14 +59,14 @@ public class PlayerMoveScript : MonoBehaviour
             } else if (moveHorizontal < 0) {
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.left), turnSpeed * Time.deltaTime);
             }
-            
-            if (moveVertical > 0) { 
+
+            if (moveVertical > 0) {
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.forward), turnSpeed * Time.deltaTime);
             } else if (moveVertical < 0) {
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.back), turnSpeed * Time.deltaTime);
             }
 
-            if(moveHorizontal != 0 || moveVertical != 0) {
+            if (moveHorizontal != 0 || moveVertical != 0) {
                 anim.SetBool("Idle", false);
             } else {
                 anim.SetBool("Idle", true);
@@ -73,5 +74,11 @@ public class PlayerMoveScript : MonoBehaviour
         } else {
             anim.SetBool("Idle", true);
         }
+    }
+
+    IEnumerator initialWaitTime() { 
+        canMove = false;
+        yield return new WaitForSeconds(3.5f);
+        canMove = true;
     }
 }

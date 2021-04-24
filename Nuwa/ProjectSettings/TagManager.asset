@@ -16,6 +16,31 @@ TagManager:
   - CreatePath1
   - PathLock
   - RespawnPoint
+  - Earth1
+  - EarthStroke1
+  - EarthStroke2
+  - EarthStroke3
+  - Earth2
+  - Water1
+  - Water2
+  - Water3
+  - Water4
+  - Wood1
+  - Wood2
+  - Wood3
+  - Wood4
+  - Fire1
+  - Fire2
+  - Fire3
+  - Fire4
+  - Metal1
+  - Metal2
+  - Metal3
+  - Metal4
+  - Metal5
+  - Metal6
+  - Metal7
+  - Metal8
   layers:
   - Default
   - TransparentFX

@@ -149,7 +149,7 @@ namespace PDollarGestureRecognizer
         public Point[] Resample(Point[] points, int n)
         {
             Point[] newPoints = new Point[n];
-            newPoints[0] = new Point(points[0].X, points[0].Y, points[0].StrokeID);
+            newPoints[0] = new Point(points[points.Length - 1].X, points[points.Length - 1].Y, points[points.Length - 1].StrokeID);
             int numPoints = 1;
 
             float I = PathLength(points) / (n - 1); // computes interval length
