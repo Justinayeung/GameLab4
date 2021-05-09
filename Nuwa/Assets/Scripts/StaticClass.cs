@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class StaticClass: MonoBehaviour
 {
@@ -68,6 +69,7 @@ public class StaticClass: MonoBehaviour
     bool woodOnce = false;
     bool fireOnce = false;
     bool metalOnce = false;
+    bool fireFinished = false;
 
     [Header("Earth References")]
     public Animator earth1Anim;
@@ -116,6 +118,8 @@ public class StaticClass: MonoBehaviour
     public GameObject waterCube;
     public Renderer waterShader;
     public Animator rockWaterAnim;
+    public GameObject mountain_03;
+    public GameObject fishCollider;
 
     [Header("Wood References")]
     public Animator wood1Anim;
@@ -140,6 +144,15 @@ public class StaticClass: MonoBehaviour
     public Transform wood3Particle;
     public Transform wood4Particle;
     public Animator Tree_01;
+    public GameObject mountain_04;
+    public GameObject mountain_05;
+    public GameObject TreeObj_01;
+    public GameObject TreeObj_02;
+    public GameObject TreeObj_03;
+    public GameObject TreeObj_04;
+    public GameObject TreeObj_05;
+    public GameObject TreeObj_06;
+    public GameObject TreeObj_07;
 
     [Header("Fire References")]
     public Animator fire1Anim;
@@ -163,6 +176,9 @@ public class StaticClass: MonoBehaviour
     public Transform fire2Particle;
     public Transform fire3Particle;
     public Transform fired4Particle;
+    public GameObject Phoenix;
+    public GameObject mountain_06;
+    public GameObject sunCollider;
 
     [Header("Metal References")]
     public Animator metal1Anim;
@@ -203,6 +219,30 @@ public class StaticClass: MonoBehaviour
     public Transform metal7Particle;
     public Transform metal8Particle;
     public Animator fadedMetal;
+    public GameObject mountain_07;
+    public GameObject flowers;
+    public GameObject flowers_01;
+    public GameObject flowers_02;
+    public GameObject flowers_03;
+    public GameObject flowers_04;
+    public GameObject flowers_05;
+    public GameObject flowers_06;
+    public GameObject flowers_07;
+    public Animator gameCrack_01;
+    public Animator gameCrack_02;
+    public GameObject endTransition;
+    public string nextScene;
+    public Camera mainCam;
+    [SerializeField] private float delay = 2f;
+    public GameObject mountainEnd_01;
+    public GameObject mountainEnd_02;
+    public GameObject mountainEnd_03;
+    public Animator frontTree_01;
+    public Animator frontTree_02;
+    public GameObject frontFlower_01;
+    public GameObject frontFlower_02;
+    public GameObject petals_01;
+    public GameObject petals_02;
 
     private void Start() {
         //Camera priorities
@@ -218,6 +258,38 @@ public class StaticClass: MonoBehaviour
         fireCal.SetActive(false);
         metalCalLight.SetActive(false);
         metalCal.SetActive(false);
+        Phoenix.SetActive(false);
+        mountain_03.SetActive(false);
+        mountain_04.SetActive(false);
+        mountain_05.SetActive(false);
+        mountain_06.SetActive(false);
+        mountain_07.SetActive(false);
+        fishCollider.SetActive(false);
+        sunCollider.SetActive(false);
+        TreeObj_01.SetActive(false);
+        TreeObj_02.SetActive(false);
+        TreeObj_03.SetActive(false);
+        TreeObj_04.SetActive(false);
+        TreeObj_05.SetActive(false);
+        TreeObj_06.SetActive(false);
+        TreeObj_07.SetActive(false);
+        flowers.SetActive(false);
+        flowers_01.SetActive(false);
+        flowers_02.SetActive(false);
+        flowers_03.SetActive(false);
+        flowers_04.SetActive(false);
+        flowers_05.SetActive(false);
+        flowers_06.SetActive(false);
+        flowers_07.SetActive(false);
+        mountainEnd_01.SetActive(false);
+        mountainEnd_02.SetActive(false);
+        mountainEnd_03.SetActive(false);
+        frontFlower_01.SetActive(false);
+        frontFlower_02.SetActive(false);
+        endTransition.SetActive(false);
+        petals_01.SetActive(false);
+        petals_02.SetActive(false);
+        
 
         waterCube.SetActive(false);
         waterShader = waterCube.GetComponent<Renderer>();
@@ -393,13 +465,16 @@ public class StaticClass: MonoBehaviour
         waterShader.material.SetFloat("_WaveScale", 0f);
         yield return new WaitForSeconds(1f);
         rockWaterAnim.SetBool("Play", true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
+        mountain_03.SetActive(true);
+        yield return new WaitForSeconds(1f);
         waterSymbol.SetBool("Play", true);
         yield return new WaitForSeconds(2f);
         waterCircle.material = unlitBlack;
         yield return new WaitForSeconds(0.2f);
         waterText.SetBool("Play", false);
         yield return new WaitForSeconds(1f);
+        fishCollider.SetActive(true);
         vCam2.Priority = 0;
         ogCam.Priority = 1;
         woodCalLight.SetActive(true);
@@ -478,11 +553,23 @@ public class StaticClass: MonoBehaviour
         yield return new WaitForSeconds(2f);
         woodText.SetBool("Play", true);
         yield return new WaitForSeconds(1f);
+        mountain_04.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        mountain_05.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        TreeObj_01.SetActive(true);
+        yield return new WaitForSeconds(1f);
         Tree_01.SetBool("Play", true);
-        yield return new WaitForSeconds(4.2f);
+        yield return new WaitForSeconds(4f);
         woodSymbol.SetBool("Play", true);
         yield return new WaitForSeconds(1.4f);
         woodCircle.material = unlitBlue;
+        TreeObj_02.SetActive(true);
+        TreeObj_03.SetActive(true);
+        TreeObj_04.SetActive(true);
+        TreeObj_05.SetActive(true);
+        TreeObj_06.SetActive(true);
+        TreeObj_07.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         woodText.SetBool("Play", false);
         yield return new WaitForSeconds(1f);
@@ -558,6 +645,11 @@ public class StaticClass: MonoBehaviour
         yield return new WaitForSeconds(2f);
         fireText.SetBool("Play", true);
         yield return new WaitForSeconds(1f);
+        mountain_06.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        Phoenix.SetActive(true);
+        yield return new WaitForSeconds(12.4f);
+        sunCollider.SetActive(true);
         fireSymbol.SetBool("Play", true);
         yield return new WaitForSeconds(1.4f);
         fireCircle.material = unlitRed;
@@ -569,6 +661,7 @@ public class StaticClass: MonoBehaviour
         metalCalLight.SetActive(true);
         metalCal.SetActive(true);
         fireOnce = true;
+        fireFinished = true;
     }
 
     /// <summary>
@@ -579,7 +672,7 @@ public class StaticClass: MonoBehaviour
             metal = true;
         }
 
-        if (fire && !metal1) {
+        if (fire && !metal1 && fireFinished) {
             fadedMetal.SetBool("Play", true);
             StartCoroutine(waitSpawnParticle());
         }
@@ -686,15 +779,44 @@ public class StaticClass: MonoBehaviour
         yield return new WaitForSeconds(2f);
         metalText.SetBool("Play", true);
         yield return new WaitForSeconds(1f);
+        mountain_07.SetActive(true);
+        yield return new WaitForSeconds(1f);
         metalSymbol.SetBool("Play", true);
         yield return new WaitForSeconds(2f);
         metalCircle.material = unlitWhite;
         yield return new WaitForSeconds(0.2f);
         metalText.SetBool("Play", false);
+        yield return new WaitForSeconds(0.5f);
+        mountainEnd_01.SetActive(true);
+        mountainEnd_02.SetActive(true);
+        mountainEnd_03.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        flowers.SetActive(true);
+        flowers_01.SetActive(true);
+        flowers_02.SetActive(true);
+        flowers_03.SetActive(true);
+        flowers_04.SetActive(true);
+        flowers_05.SetActive(true);
+        flowers_06.SetActive(true);
+        flowers_07.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        frontTree_01.SetBool("Play", true);
+        frontTree_02.SetBool("Play", true);
+        yield return new WaitForSeconds(4.4f);
+        frontFlower_01.SetActive(true);
+        frontFlower_02.SetActive(true);
+        yield return new WaitForSeconds(3f);
         yield return new WaitForSeconds(1f);
-        vCam5.Priority = 0;
-        ogCam.Priority = 1;
-        metalOnce = true;
+        gameCrack_01.SetBool("Restore", true);
+        gameCrack_02.SetBool("Restore", true);
+        yield return new WaitForSeconds(1.3f);
+        petals_01.SetActive(true);
+        petals_02.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(FadeSound());
+        endTransition.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(nextScene);
     }
 
     /// <summary>
@@ -708,5 +830,16 @@ public class StaticClass: MonoBehaviour
             timer = particleSpawnRate;
         }
         timer -= Time.deltaTime;
+    }
+
+    IEnumerator FadeSound() {
+        float elapsedTime = 0;
+        float currentVolume = AudioListener.volume;
+ 
+        while(elapsedTime < delay) {
+            elapsedTime += Time.deltaTime;
+            AudioListener.volume = Mathf.Lerp(currentVolume, 0, elapsedTime / delay);
+            yield return null;
+        }
     }
 }

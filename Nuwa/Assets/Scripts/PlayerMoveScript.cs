@@ -78,7 +78,7 @@ public class PlayerMoveScript : MonoBehaviour
 
     IEnumerator initialWaitTime() { 
         canMove = false;
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(4f);
         canMove = true;
     }
 }

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     DrawManager draw;
     //UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter character;
-    PlayerMoveScript character;
+    public PlayerMoveScript character;
 
     // Start is called before the first frame update
     void Start() {
@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
         draw = FindObjectOfType<DrawManager>();
         //character = FindObjectOfType<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter>();
         character = FindObjectOfType<PlayerMoveScript>();
-        character.canMove = true;
         if(brushCamera != null) {
             brushCamera.gameObject.SetActive(false);
         }
@@ -54,14 +53,16 @@ public class GameManager : MonoBehaviour
         }
 
         if (StaticClass.brushObtained) { 
-            if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift)) {
                 virtualCam.enabled = false;
-                setDrawing(!isDrawing);
+                isDrawing = true;
+                setDrawing(isDrawing);
             }
 
-            if (Input.GetKeyUp(KeyCode.LeftShift)) {
+            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift)) {
                 virtualCam.enabled = true;
-                setDrawing(!isDrawing);
+                isDrawing = false;
+                setDrawing(isDrawing);
                 draw.TryRecognize();
             }
         }
